@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% if @users.present? %>
+        <% @users.each do |user| %>
+          <% if current_user != user %>
+            <%= turbo_frame_tag dom_id(user) do %>
+              <tr>
+                <th scope="row"><%= user.id %></th>
+                <td><%= user.email %></td>
+                <% unless user.admin? %>
+                  <td>
+                    <%= link_to 'Make Admin', set_admin_user_path(user), 
+                      data: { turbo_method: :patch, 
+                              confirm: "Are you sure you want to make this user an admin?" }, 
+                      class: "btn btn-success" %>
+                  </td>
+                <% else %>
+                  <td>
+                    <%= link_to 'Remove Admin', remove_admin_user_path(user), 
+                      data: { turbo_method: :patch, 
+                              confirm: "Are you sure you want to remove admin rights?" }, 
+                      class: "btn btn-danger" %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>        
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <% if notice %>
+      <div class="alert alert-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <%= render @project %>
+
+    <div class="mt-3">
+      <%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-primary btn-sm mr-2" %>
+      <%= link_to "Back to projects", projects_path, class: "btn btn-secondary btn-sm mr-2" %>
+      <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+    </div>
+  </div>
+</div>

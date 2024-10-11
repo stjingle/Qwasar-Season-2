@@ -1,0 +1,16 @@
+<% content_for :title, "New project" %>
+
+<div class="card">
+  <div class="card-header text-center bg-primary text-white">
+    <h1>Add New Project</h1>
+  </div>
+  <div class="card-body">
+    <!-- Form -->
+    <%= render "form", project: @project %>
+
+    <!-- Add margin and padding between elements -->
+    <div class="mt-4">
+      <%= link_to "Back to projects", projects_path, class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

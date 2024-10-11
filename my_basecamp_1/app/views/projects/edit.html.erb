@@ -1,0 +1,27 @@
+<% content_for :title, "Editing project" %>
+
+<div class="card">
+  <div class="card-header text-center bg-warning text-dark">
+    <h1>Editing Project</h1>
+  </div>
+  <div class="card-body">
+
+    <%= render "form", project: @project %>
+
+   
+    <div class="mt-4">
+      <%= link_to "Show this project", @project, class: "btn btn-secondary mr-2" %>
+
+   <br>
+   <br>
+      <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-danger" %>
+    </div>
+
+    <br>
+
+
+    <div class="mt-3">
+      <%= link_to "Back to projects", projects_path, class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>
